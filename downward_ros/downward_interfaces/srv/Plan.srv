@@ -1,0 +1,7 @@
+string problem
+string domain
+string evaluator
+string search
+---
+bool response
+string[] plan

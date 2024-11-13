@@ -1,4 +1,5 @@
 # Task_and_motion_planning2
+![Screenshot from 2024-11-13 18-27-56](https://github.com/user-attachments/assets/d37b85ad-c548-4f75-8043-789c6562659e)
 
 This meta-repository contains:
 

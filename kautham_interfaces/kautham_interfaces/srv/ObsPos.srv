@@ -1,0 +1,5 @@
+string obsname
+float32[] setpos
+---
+bool response
+float32[] getpos

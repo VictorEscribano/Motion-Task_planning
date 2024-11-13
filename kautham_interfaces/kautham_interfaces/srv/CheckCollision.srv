@@ -1,0 +1,7 @@
+float32[] config
+---
+bool response
+bool collisionfree
+string msg
+uint32 collidingrob
+string collidedobs

@@ -12,7 +12,7 @@ This meta-repository contains:
 ```
 $ mkdir -p colcon_ws/src
 $ cd colcon_ws/src
-$ git clone  --recurse-submodules https://gitioc.upc.edu/rostutorials/task_and_motion_planning2.git
+$ git clone  https://github.com/VictorEscribano/Motion-Task_planning.git
 $ cd ..
 $ colcon build
 ```

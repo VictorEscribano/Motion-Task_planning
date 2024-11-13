@@ -1,15 +1,15 @@
-# Task_and_motion_planning2
-![Screenshot from 2024-11-13 18-27-56](https://github.com/user-attachments/assets/d37b85ad-c548-4f75-8043-789c6562659e)
+# Task\_and\_motion\_planning2
 
 This meta-repository contains:
 
-- module **downward_ros**: package that wraps the Fast-Downward set of task planners - (using **ros2** branch)
+module **downward\_ros**: package that wraps the Fast-Downward set of task planners - (using **ros2** branch)
 
-- module **kautham_interfaces**: package that wraps the calls to the Kautham services
+module **kautham\_interfaces**: package that wraps the calls to the Kautham services
 
-- module **ktmpb**: package that uses the Fast-Downward and Katham services to plan at task and motion levels - (using **ros2** branch)
+module **ktmpb**: package that uses the Fast-Downward and Katham services to plan at task and motion levels - (using **ros2** branch)
 
 ## Clone and build
+
 ```
 $ mkdir -p colcon_ws/src
 $ cd colcon_ws/src
@@ -19,22 +19,25 @@ $ colcon build
 ```
 
 ## Test
-The **ktmpb** package has a demo folder called *task_and_motion_planning2/ktmpb/ktmpb_interfaces/demos/* that is installed in *install/ktmpb_interfaces/share/ktmpb_interfaces/demos/*.
+
+The **ktmpb** package has a demo folder called _task\_and\_motion\_planning2/ktmpb/ktmpb\_interfaces/demos/_ that is installed in _install/ktmpb\_interfaces/share/ktmpb\_interfaces/demos/_.
 
 To test the task and motion planning client launch the following file:
 
 ```
-$ ros2 launch ktmpb_client table_rooms_a.launch.py
+$ ros2 launch ktmpb_client tiago_kitchen_no_pose_right.launch.py
 ```
 
-This example uses the task and motion planning configuration file **tampconfig_a.xml** in the folder *demos/OMPL_geo_demos/Table_Rooms_R2*, where the following PDDL files and Kautham files to be used are defined:
+This example uses the task and motion planning configuration file **tampconfig\_no\_pose\_right.xml** where the following PDDL files and Kautham files to be used are defined:
 
-    - pddldomain file: "ff-domains/manipulationdomain.pddl"
-    - pddlproblem file "ff-domains/manipulation_problem_A"
-    - kautham file: "OMPL_RRTconnect_table_rooms_R2_a.xml"
+```
+- pddldomain file: "ff-domains/manipulationdomain.pddl"
+- pddlproblem file "ff-domains/manipulation_problem_redcan"
+- kautham file: "tiago_mobile_counterA_counterB_right.xml"
+```
 
-The resulting file (in the folder *install/ktmpb_interfaces/share/ktmpb_interfaces/demos/*) is called:
+The resulting file (in the folder _install/ktmpb\_interfaces/share/ktmpb\_interfaces/demos/_) is called:
 
-    - taskfile_tampconfig_a.xml
-
-Open the *OMPL_RRTconnect_table_rooms_R2_a.xml* prioblem using the Kautham GUI and then load and run the taskfile.
+```
+- taskfile_tampconfig_pose_no_graspit_right.xml
+```

@@ -28,7 +28,7 @@ def launch_setup(context, *args, **kwargs):
         name='service',
         arguments=[],
         parameters=[],
-       # prefix=['xterm -e'],
+        prefix=['xterm -e'],
     )
 
     ktmpb_client_node = Node(

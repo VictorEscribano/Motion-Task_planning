@@ -1,16 +1,17 @@
 <?xml version="1.0"?>
 <Problem name="Tiago mobile in kitchen">
 	<Robot robot="robots/tiago/tiago_right_try.urdf" scale="1.0">
-            <Limits name="X" min="-3.0" max="3.0" />
-            <Limits name="Y" min="-3.0" max="3.0" />
+            <Limits name="X" min="-6.0" max="6.0" />
+            <Limits name="Y" min="-6.0" max="6.0" />
             <Limits name="Z" min="0.0985" max="0.0986" />
             <ViewLink name="base_link"/>
 	</Robot>
 
         <!--Red can -->
 	<Obstacle obstacle="obstacles/kitchen/can.urdf" scale="1">
-		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="0.91" Y="0" X="1.1" />
+		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="1.0" Y="2.3" X="2.8" />
 	</Obstacle>
+0.8 -1.2 1
   
 	    <!--Red can -->
 	<Obstacle obstacle="obstacles/kitchen/kitchenfloor.urdf" scale="1">
@@ -58,13 +59,13 @@
 		<Parameters>
 			<Name>omplRRTConnect</Name>
             <Parameter name="_Max Planning Time">120</Parameter> <!-- Keep this to a high valus since it will be used for all the planning queries because it is the problem defined in the tamp configuration files -->
-			<Parameter name="_Speed Factor">2</Parameter>
+			<Parameter name="_Speed Factor">10</Parameter>
 			<Parameter name="Range">0.1</Parameter>
 		</Parameters>
 		<Queries>
 			<Query>
-                <Init>0.455 0.541 0.508</Init>
-                <Goal>0.603 0.602 0.740</Goal>
+                <Init>0.541 0.444 0.740</Init>
+                <Goal>0.241 0.342 0.737</Goal>
 			</Query>
 		</Queries>
 	</Planner>

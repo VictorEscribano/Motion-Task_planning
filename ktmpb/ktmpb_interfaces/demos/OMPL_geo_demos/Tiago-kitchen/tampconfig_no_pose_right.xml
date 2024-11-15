@@ -12,8 +12,8 @@
         <!-- The Graspcontrols will be to be changed accordingly the new intial object poses-->
         <!-- (be careful: if the objects change their initial room then also the pddl problem file has to be set accordingly) -->
         <Initial>
-            <Object name="REDCAN" kthname="can">  1.1 0 0.2 1 0 0 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
-            <Robot name="TIAGO" controlfile="controls/tiago_simple_only_mobile.cntr"> 0.603 0.602 0.740 </Robot>
+            <Object name="REDCAN" kthname="can">  0.8 -1.2 1 1 0 0 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
+            <Robot name="TIAGO" controlfile="controls/tiago_simple_only_mobile.cntr"> 0.688 0.741 0.740 </Robot>
         </Initial>
     </States>
     <Actions>
@@ -37,11 +37,13 @@
             <!--Poseregion>-0.95 -0.9 0.3 0.35  0.907 0.004158435855060816 0.014741266146302223 -0.9167522192001343 0.3991626501083374</Poseregion>
             <Pose> -0.910 0.314 0.9071908593177795 0.004158435855060816 0.014741266146302223 -0.9167522192001343 0.3991626501083374</Pose-->
         </Place>
+
         <Move robot="TIAGO" region_from="COUNTERA" region_to="COUNTERB">
             <Rob> 0 </Rob>
             <Cont>controls/tiago_simple_only_mobile.cntr</Cont>
-            <InitControls> 0.603 0.602 0.740</InitControls>
-            <GoalControls> 0.475 0.541 0.508</GoalControls>
+            <InitControls> 0.688 0.741 0.740</InitControls>
+            <GoalControls> 0.241 0.184 0.241</GoalControls>
         </Move>
+
     </Actions>
 </Config>

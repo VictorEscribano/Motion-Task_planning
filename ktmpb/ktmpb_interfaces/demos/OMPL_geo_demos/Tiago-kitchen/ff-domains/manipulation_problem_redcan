@@ -9,13 +9,13 @@
 )
 
 (:init
-    (at Tiago counterA)
-    (in redcan counterA)
+    (at Tiago counterB)
+    (in redcan counterB)
     (handEmpty)
 )
 
 (:goal
-    (in redcan counterB)
+    (in redcan counterA)
 )
 )
 

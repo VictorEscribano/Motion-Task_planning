@@ -44,7 +44,7 @@
   
   <!-- Define the controls -->
   <!-- Tiago -->
-  <!-- <Control name="X" eigValue="1.0">
+  <Control name="X" eigValue="1.0">
      <DOF name="tiago/X" value="1.0"></DOF>
   </Control>
 
@@ -54,7 +54,7 @@
 
   <Control name="RZ" eigValue="1.0">
      <DOF name="tiago/X3" value="1.0"></DOF>
-  </Control> -->
+  </Control>
   
   <Control name="torso_lift_link" eigValue="1">
     <DOF name="tiago/torso_lift_link" value="1"/>
@@ -93,7 +93,23 @@
     <DOF name="tiago/gripper_right_finger_link" value="1"/>
   </Control>
 
-  <!-- Tiago -->
+  <!-- UR -->
+  <Control name="X_UR" eigValue="1.0">
+     <DOF name="ur3_robotniq_A/X" value="1.0"></DOF>
+  </Control>
+
+  <Control name="Y_UR" eigValue="1.0">
+     <DOF name="ur3_robotniq_A/Y" value="1.0"></DOF>
+  </Control>
+
+  <Control name="Z_UR" eigValue="1.0">
+     <DOF name="ur3_robotniq_A/Z" value="1.0"></DOF>
+  </Control>
+
+  <Control name="RZ_UR" eigValue="1.0">
+     <DOF name="ur3_robotniq_A/X3" value="1.0"></DOF>
+  </Control>
+  
   <Control name="shoulder_pan_joint_A" eigValue="1.0">
     <DOF name="ur3_robotniq_A/shoulder_link" value="1.0" />
   </Control>  

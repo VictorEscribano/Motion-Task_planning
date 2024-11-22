@@ -3,9 +3,9 @@
 
 	<Offset>
   <!--Set the pose of the tiago-->
-    <DOF name="tiago/X" value="0.5"></DOF>
-    <DOF name="tiago/Y" value="0.5"></DOF>
-    <DOF name="tiago/Z" value="0.5"></DOF>
+    <DOF name="tiago/X" value="0.556"></DOF>
+    <DOF name="tiago/Y" value="0.752"></DOF>
+    <DOF name="tiago/Z" value="0.259"></DOF>
     <DOF name="tiago/X1" value="0"></DOF>
     <DOF name="tiago/X2" value="0.5"></DOF>
     <DOF name="tiago/X3" value="0.5"></DOF>
@@ -51,7 +51,7 @@
   
   <!-- Define the controls -->
   <!-- Tiago -->
-  <Control name="X" eigValue="1.0">
+<!--   <Control name="X" eigValue="1.0">
      <DOF name="tiago/X" value="1.0"></DOF>
   </Control>
 
@@ -61,7 +61,7 @@
 
   <Control name="RZ" eigValue="1.0">
      <DOF name="tiago/X3" value="1.0"></DOF>
-  </Control>
+  </Control> -->
   
   <Control name="torso_lift_link" eigValue="1">
     <DOF name="tiago/torso_lift_link" value="1"/>

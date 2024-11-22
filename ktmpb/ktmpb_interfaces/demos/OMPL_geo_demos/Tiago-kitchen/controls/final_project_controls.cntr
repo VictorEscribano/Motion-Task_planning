@@ -3,30 +3,35 @@
 
 	<Offset>
   <!--Set the pose of the tiago-->
-                <DOF name="tiago/X" value="0.237"/>
-                <DOF name="tiago/Y" value="0.741"/>
-                <DOF name="tiago/Z" value="0.5"/>
-                <DOF name="tiago/X1" value="0"/>
-                <DOF name="tiago/X2" value="0.5"/>
-                <DOF name="tiago/X3" value="0.740"/>
-	<!--Set the configurations of the tiago joints -->
-    <DOF name="tiago/torso_lift_link" value="0.500"/>
-		<DOF name="tiago/arm_1_link" value="0.500"/>
-		<DOF name="tiago/arm_2_link" value="0.500"/>
-	  <DOF name="tiago/arm_3_link" value="0.5" />
-		<DOF name="tiago/arm_4_link" value="0.5" />
-		<DOF name="tiago/arm_5_link" value="0.500"/>
-		<DOF name="tiago/arm_6_link" value="0.500"/>
-		<DOF name="tiago/arm_7_link" value="0.500"/>
-		<DOF name="tiago/gripper_left_finger_link" value="0.500"/>
-		<DOF name="tiago/gripper_right_finger_link" value="0.500"/>
+    <DOF name="tiago/X" value="0.5"></DOF>
+    <DOF name="tiago/Y" value="0.5"></DOF>
+    <DOF name="tiago/Z" value="0.5"></DOF>
+    <DOF name="tiago/X1" value="0"></DOF>
+    <DOF name="tiago/X2" value="0.5"></DOF>
+    <DOF name="tiago/X3" value="0.5"></DOF>
+	  <DOF name="tiago/wheel_right_link" value="0.5"/>
+	  <DOF name="tiago/wheel_left_link" value="0.5"/>
+	  <DOF name="tiago/torso_lift_link" value="0.759"/>
+	  <DOF name="tiago/head_1_link" value="0.594"/>
+	  <DOF name="tiago/head_2_link" value="0.459"/>     
+	  <DOF name="tiago/arm_1_link" value="0.023"/>
+	  <DOF name="tiago/arm_2_link" value="0.628"/>
+	  <DOF name="tiago/arm_3_link" value="0.688" />
+	  <DOF name="tiago/arm_4_link" value="0.820" />
+	  <DOF name="tiago/arm_5_link" value="0.083"/>
+	  <DOF name="tiago/arm_6_link" value="0.974"/>
+	  <DOF name="tiago/arm_7_link" value="0.553"/>
+	  <DOF name="tiago/gripper_left_finger_link" value="1.000"/>
+    <DOF name="tiago/gripper_right_finger_link" value="1.000"/>
   <!--Set the pose of the tiago-->
+
+
     <DOF name="ur3_robotniq_A/X" value="0.5"/>
-    <DOF name="ur3_robotniq_A/Y" value="0.5"/>
-    <DOF name="ur3_robotniq_A/Z" value="0.5"/>
+    <DOF name="ur3_robotniq_A/Y" value="0.81"/>
+    <DOF name="ur3_robotniq_A/Z" value="0.262"/>
     <DOF name="ur3_robotniq_A/X1" value="0.0"/>
     <DOF name="ur3_robotniq_A/X2" value="0.5"/>
-    <DOF name="ur3_robotniq_A/X3" value="0.25"/>
+    <DOF name="ur3_robotniq_A/X3" value="0.75"/>
   <!--Set the configurations of the tiago joints -->
     <DOF name="ur3_robotniq_A/shoulder_link" value="0.5"/>
     <DOF name="ur3_robotniq_A/upper_arm_link" value="0.5"/>
@@ -94,7 +99,7 @@
   </Control>
 
   <!-- UR -->
-  <Control name="X_UR" eigValue="1.0">
+  <!-- <Control name="X_UR" eigValue="1.0">
      <DOF name="ur3_robotniq_A/X" value="1.0"></DOF>
   </Control>
 
@@ -108,7 +113,7 @@
 
   <Control name="RZ_UR" eigValue="1.0">
      <DOF name="ur3_robotniq_A/X3" value="1.0"></DOF>
-  </Control>
+  </Control> -->
   
   <Control name="shoulder_pan_joint_A" eigValue="1.0">
     <DOF name="ur3_robotniq_A/shoulder_link" value="1.0" />

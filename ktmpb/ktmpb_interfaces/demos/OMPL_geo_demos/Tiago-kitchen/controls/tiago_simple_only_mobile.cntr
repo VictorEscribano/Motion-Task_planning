@@ -1,13 +1,13 @@
 <?xml version="1" encoding="UTF-8"?>
 <ControlSet>
 
- <Offset>
-        <DOF name="tiago/X" value="0.5"></DOF>
-        <DOF name="tiago/Y" value="0.5"></DOF>
-        <DOF name="tiago/Z" value="0.5"></DOF>
-        <DOF name="tiago/X1" value="0"></DOF>
-        <DOF name="tiago/X2" value="0.5"></DOF>
-        <DOF name="tiago/X3" value="0.5"></DOF>
+<Offset>
+   <DOF name="tiago/X" value="0.5"></DOF>
+   <DOF name="tiago/Y" value="0.5"></DOF>
+   <DOF name="tiago/Z" value="0.5"></DOF>
+   <DOF name="tiago/X1" value="0"></DOF>
+   <DOF name="tiago/X2" value="0.5"></DOF>
+   <DOF name="tiago/X3" value="0.5"></DOF>
 	<DOF name="tiago/wheel_right_link" value="0.5"/>
 	<DOF name="tiago/wheel_left_link" value="0.5"/>
 	<DOF name="tiago/torso_lift_link" value="0.759"/>
@@ -21,7 +21,7 @@
 	<DOF name="tiago/arm_6_link" value="0.974"/>
 	<DOF name="tiago/arm_7_link" value="0.553"/>
 	<DOF name="tiago/gripper_left_finger_link" value="1.000"/>
-        <DOF name="tiago/gripper_right_finger_link" value="1.000"/>
+   <DOF name="tiago/gripper_right_finger_link" value="1.000"/>
  </Offset>
 
   <Control name="X" eigValue="1.0">

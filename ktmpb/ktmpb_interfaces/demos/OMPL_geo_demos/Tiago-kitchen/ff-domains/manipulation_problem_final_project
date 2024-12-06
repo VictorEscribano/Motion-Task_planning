@@ -1,0 +1,22 @@
+(define (problem manip_final_project)
+
+(:domain manipulation)
+
+(:objects 
+    tablea kitchen tableb - location
+    firstcan secondcan - obstacle
+    Tiago - robot
+)
+
+(:init
+    (at Tiago tablea)
+    (in firstcan tablea)
+    (in secondcan tableb)
+    (handEmpty)
+)
+
+(:goal
+    (and (in firstcan kitchen) (in secondcan kitchen))
+)
+
+)

@@ -1,7 +1,0 @@
-<?xml version="1.0"?>
-<Config>
-    <Problemfiles>
-        <kautham name="OMPL_RRTConnect_yumi_table_top.xml" />
-        <directory name="/demos/OMPL_geo_demos/Yumi_Table_Top/"/>
-    </Problemfiles>
-</Config>

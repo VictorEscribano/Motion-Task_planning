@@ -10,7 +10,7 @@
     <States>
         <Initial>
             <Object name="FIRSTCAN" kthname="can">  0.8 -1.2 1 1 0 0 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
-            <Object name="SECONDCAN" kthname="secondcan">  0.8 -1.2 1 1 0 0 0</Object>
+            <Object name="SECONDCAN" kthname="can_1">  0.8 1.2 1 1 0 0 0</Object>
             <Robot name="TIAGO" controlfile="controls/tiago_simple_only_mobile.cntr"> 0.556 0.752 0.259 </Robot>
         </Initial>
     </States>
@@ -44,32 +44,32 @@
             <Rob> 0 </Rob>
             <Cont>controls/tiago_simple_only_mobile.cntr</Cont>
             <InitControls> 0.556 0.752 0.259 </InitControls>
-            <GoalControls> 0.643 0.568 0.759</GoalControls>
+            <GoalControls> 0.252 0.564 0.695</GoalControls>
         </Move>
 
 
         <!-- Actions for the second CAN -->
         <Pick robot="TIAGO" object="SECONDCAN" region="TABLEB">
             <Rob> 0 </Rob> 
-            <Obj> can </Obj> 
+            <Obj> can_1 </Obj> 
             <Link> 14 </Link> <!-- Index of the robot link -->
             <Cont>controls/tiago_pick_tableB.cntr</Cont>
             <Regioncontrols> 0.459 0.023 0.628 0.688 0.820 0.083 0.974 0.553 1.000</Regioncontrols>
-            <Graspcontrols grasp= "lateralgrasp">0.214 0.485 0.594 0.369 0.808 0.579 0.462 0.417 1</Graspcontrols>
+            <Graspcontrols grasp= "lateralgrasp">1 0.56 0.876 0.673 0.466 0.09 1 0.451 0.797</Graspcontrols>
             
         </Pick>
         <Place robot="TIAGO" object="SECONDCAN" region="KITCHEN">
             <Rob> 0 </Rob>
-            <Obj> can </Obj>
+            <Obj> can_1 </Obj>
             <Cont>controls/tiago_place_secondcan.cntr</Cont>
             <Regioncontrols> 0.459 0.023 0.628 0.688 0.820 0.083 0.974 0.553 1.000</Regioncontrols>
-            <Graspcontrols grasp="lateralgrasp">0.214 0.485 0.594 0.369 0.808 0.579 0.462 0.417 1 </Graspcontrols>
+            <Graspcontrols grasp="lateralgrasp">1 0.56 0.876 0.673 0.466 0.09 1 0.451 0.797</Graspcontrols>
         </Place>
 
         <Move robot="TIAGO" region_from="TABLEB" region_to="KITCHEN">
             <Rob> 0 </Rob>
             <Cont>controls/tiago_simple_only_mobile.cntr</Cont>
-            <InitControls> 0.643 0.568 0.759 </InitControls>
+            <InitControls> 0.252 0.564 0.695 </InitControls>
             <GoalControls> 0.556 0.752 0.259</GoalControls>
         </Move>
 

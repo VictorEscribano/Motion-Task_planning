@@ -3,20 +3,35 @@
 (:domain manipulation)
 
 (:objects 
-    tablea kitchen tableb - location
-    firstcan secondcan - obstacle
+    tablea kitchen tableb sink coffeemachine client - location
+    firstcan secondcan thirdcan - obstacle
     Tiago - robot
 )
 
 (:init
-    (at Tiago tablea)
+    (at Tiago kitchen)
     (in firstcan tablea)
     (in secondcan tableb)
+    (in thirdcan sink)
     (handEmpty)
+    (isempty firstcan)
+    (isempty secondcan)
+    (isempty thirdcan)
+    (served firstcan)
+    (served secondcan)
+    (not (served thirdcan))
+    (not (isclean firstcan))
+    (not (isclean secondcan))
+    (isclean thirdcan)
 )
 
 (:goal
-    (and (in firstcan kitchen) (in secondcan kitchen))
+    (and
+        (in thirdcan client)
+        (served thirdcan) ; Ensure thirdcan has been served
+        (in firstcan kitchen)
+        (in secondcan kitchen)
+        
+    )
 )
-
 )

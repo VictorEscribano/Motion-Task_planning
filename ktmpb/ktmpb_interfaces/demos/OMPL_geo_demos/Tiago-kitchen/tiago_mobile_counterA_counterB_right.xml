@@ -17,13 +17,10 @@
 		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="0.87" Y="0" X="-3" />
 	</Obstacle>
 
-	<Obstacle obstacle="obstacles/kitchen/can_2.urdf" scale="1">
-		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="0.87" Y="0" X="1.8" />
+	<Obstacle obstacle="obstacles/kitchen/can_3.urdf" scale="1">
+		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="0.87" Y="4.6" X="-1.3" />
 	</Obstacle>
 
-	<Obstacle obstacle="obstacles/kitchen/can_3.urdf" scale="1">
-		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="0.87" Y="-3" X="1.8" />
-	</Obstacle>
 
 	<Obstacle obstacle="obstacles/kitchen/kitchenfloor.urdf" scale="1">
 		<Home TH="0" WZ="0.0" WY="0.0" WX="1.0" Z="-0.001" Y="0" X="0" />

@@ -11,7 +11,7 @@
         <Initial>
             <Object name="FIRSTCAN" kthname="can">  0.8 -1.2 1 1 0 0 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
             <Object name="SECONDCAN" kthname="can_1">  0.8 1.2 1 1 0 0 0</Object>
-            <Object name="THIRDCAN" kthname="can_3">  0.8 2 1 1 0 0 0</Object>
+            <Object name="THIRDCAN" kthname="can_3">  1 1.2 1 1 0 0 0</Object>
             <Robot name="TIAGO" controlfile="controls/tiago_simple_only_mobile.cntr"> 0.556 0.752 0.259 </Robot>
         </Initial>
     </States>
@@ -89,7 +89,7 @@
             <Link> 14 </Link> <!-- Index of the robot link -->
             <Cont>controls/tiago_pick_sink.cntr</Cont>
             <Regioncontrols> 0.459 0.023 0.628 0.688 0.820 0.083 0.974 0.553 1.000</Regioncontrols>
-            <Graspcontrols grasp= "lateralgrasp">0.628 0.613 0.793 0.432 0.733 0.643 0.5 0.5 0.91</Graspcontrols>
+            <Graspcontrols grasp= "lateralgrasp">0.9 0.613 0.793 0.432 0.733 0.643 0.5 0.5 0.91</Graspcontrols>
         </Pick>
 
         <Move robot="TIAGO" region_from="SINK" region_to="CLIENT">

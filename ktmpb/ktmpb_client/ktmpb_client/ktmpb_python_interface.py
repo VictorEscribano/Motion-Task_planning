@@ -30,7 +30,7 @@ import pytransform3d.transformations as pt
 import pytransform3d.rotations as pr
 
 #Add here any NEW action that can be done
-import MOVE, PICK, PLACE, DUMMY
+import MOVE, PICK, PLACE, DUMMY, SERVE, FILL
 #import TIAGO
 
 #Function to write to xml file in Conf tag

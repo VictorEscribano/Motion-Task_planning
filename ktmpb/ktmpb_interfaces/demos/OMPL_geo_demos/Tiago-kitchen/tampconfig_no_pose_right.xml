@@ -10,8 +10,8 @@
     <States>
         <Initial>
             <Object name="FIRSTCAN" kthname="can">  0.8 -1.2 1 1 0 0 0</Object> <!-- orientation in axis-angle (vx,vy,vz,theta) like in the kautham problem files-->
-            <Object name="SECONDCAN" kthname="can_1">  0.8 1.2 1 1 0 0 0</Object>
-            <Object name="THIRDCAN" kthname="can_3">  1 1.2 1 1 0 0 0</Object>
+            <Object name="SECONDCAN" kthname="can_1">  0.8 1.5 1 1 0 0 0</Object>
+            <Object name="THIRDCAN" kthname="can_3">  0.8 1.2 1 1 0 0 0</Object>
             <Robot name="TIAGO" controlfile="controls/tiago_simple_only_mobile.cntr"> 0.556 0.752 0.259 </Robot>
         </Initial>
     </States>

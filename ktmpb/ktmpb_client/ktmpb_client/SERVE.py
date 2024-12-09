@@ -8,60 +8,84 @@ global path
 global serve
 serve = defaultdict(lambda: defaultdict(dict))
 
-def SERVE(node, serve, info, Line):  # Management of the action on the task plan
+
+def SERVE(node, serve, info, Line):
     print("**************************************************************************")
     print("  SERVE ACTION  ")
     print("**************************************************************************")
     action = Line[0]
     rob = Line[1]
     obstacle = Line[2]
+    destination = Line[3]
 
-    print(action + " " + rob + " " + obstacle)
-    obsName = serve['Obj']  # Object name
-    robotIndex = serve['Rob']  # Robot index
-    Robot_control = serve['Cont']
-    init = serve['InitControls']
-    goal = serve['GoalControls']
+    print(f"Executing {action} for robot {rob}, object {obstacle}, to destination {destination}")
 
-    # Set robot control
+    # Inicializar variables
+    try:
+        obsName = serve['Obj']  # Nombre del objeto
+        robotIndex = serve['Rob']  # Índice del robot
+        init = serve['InitControls']  # Configuración inicial
+        goal = serve['GoalControls']  # Configuración final
+        Robot_control = serve['Cont']  # Archivo de control del robot
+    except KeyError as e:
+        print(f"Error: Campo faltante en los datos de SERVE: {e}")
+        return False
+
+    print("Init= ", init)
+    print("Goal= ", goal)
+    print("Robot control= ", Robot_control)
+
+    # Configurar control del robot
     kautham.kSetRobControlsNoQuery(node, Robot_control)
 
-    # Attach the object at the initial location
-    print(f"Attaching object {obsName} at the initial location...")
-    kautham.kAttachObject(node, robotIndex, 14, obsName)  # Assuming link 14, update if needed
+    # Adjuntar el objeto
+    print(f"Acoplando objeto {obsName} al robot...")
+    kautham.kAttachObject(node, robotIndex, 14, obsName)
 
-    # Move from initial to goal location
-    print(f"Moving from {init} to {goal} with object {obsName}...")
+    # Configurar la consulta de movimiento en Kautham
+    print(f"Moviendo de {init} a {goal} con el objeto {obsName}.")
     kautham.kSetQuery(node, init, goal)
-    kautham.kSetPlannerParameter(node, "_Incremental (0/1)", "0")
+    kautham.kSetPlannerParameter(node, "_Incremental (0/1)", "0")  # Planificación desde cero
     path = kautham.kGetPath(node, 1)
 
     if path:
-        print("-------- Path found: Moving to the goal location.")
+        print("-------- Path encontrado: Realizando movimiento para SERVE.")
+        # Escribir el path en el archivo de tareas
         info.taskfile.write("\t<Serve>\n")
-        k = sorted(list(path.keys()))[-1][1] + 1  # Number of joints
-        p = sorted(list(path.keys()))[-1][0] + 1  # Number of points in the path
+        k = sorted(list(path.keys()))[-1][1] + 1  # Número de articulaciones
+        p = sorted(list(path.keys()))[-1][0] + 1  # Número de puntos en el path
         for i in range(p):
             tex = ''
             for j in range(0, k):
                 tex = tex + str(path[i, j]) + " "
             ktmpb_python_interface.writePath(info.taskfile, tex)
         info.taskfile.write("\t</Serve>\n")
+        
+        # Mover el robot al estado objetivo
         kautham.kMoveRobot(node, goal)
+
+        # Desacoplar el objeto en el destino
+        print(f"Desacoplando objeto {obsName} en el destino.")
+        kautham.kDetachObject(node, obsName)
+
+        # Volver a la posición inicial (opcional)
+        print("Regresando a la configuración inicial.")
+        kautham.kSetQuery(node, goal, init)
+        path_back = kautham.kGetPath(node, 1)
+        if path_back:
+            kautham.kMoveRobot(node, init)
+            print("Movimiento de retorno completado.")
+        else:
+            print("No se encontró un camino de retorno.")
+        return True
     else:
         print("**************************************************************************")
-        print("Get path Failed! No Serve possible, Infeasible Task Plan")
+        print("Get path Failed! No SERVE possible, Infeasible Task Plan")
         print("**************************************************************************")
         return False
 
-    # Detach the object at the goal location
-    print(f"Detaching object {obsName} at the goal location...")
-    kautham.kDetachObject(node, obsName)
 
-    print("SERVE action completed.")
-    return True
-
-def Serve_read(action_element):  # Reading from the tamp configuration file
+def Serve_read(action_element):  # Leer datos de la configuración
     for val in action_element.attrib:
         globals()[val] = action_element.attrib[val]
 

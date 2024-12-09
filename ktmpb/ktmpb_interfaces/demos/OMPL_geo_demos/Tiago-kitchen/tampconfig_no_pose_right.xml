@@ -106,7 +106,7 @@
             <GoalControls> 0.575 0.827 0.237 </GoalControls>
         </Move>
 
-        <Place robot="TIAGO" object="THIRDCAN" region="KITCHEN">
+        <Place robot="TIAGO" object="THIRDCAN" region="COFFEEMACHINE">
             <Rob> 0 </Rob>
             <Obj> can_3 </Obj>
             <Cont>controls/tiago_place_coffee_machine.cntr</Cont>
@@ -115,19 +115,20 @@
         </Place>
 
         <Fill robot="TIAGO" object="THIRDCAN">
-            <Rob> 0 </Rob> 
-            <Obj> can_3 </Obj> 
+            <Rob> 0 </Rob>
+            <Obj> can_3 </Obj>
             <Cont>controls/tiago_fill_sink.cntr</Cont>
             <Regioncontrols> 0.459 0.023 0.628 0.688 0.820 0.083 0.974 0.553 1.000</Regioncontrols>
-            <Graspcontrols grasp= "lateralgrasp">0.921 0.297 0.801 0.387 0.665 0.451 0.504 0.5 0.91</Graspcontrols>
+            <ClickButton>0.921 0.297 0.801 0.387 0.665 0.451 0.504 0.5 0.91</ClickButton>
         </Fill>
 
-        <Serve robot="TIAGO" object="THIRDCAN">
+
+        <Serve robot="TIAGO" object="THIRDCAN" region="CLIENT">
             <Rob> 0 </Rob>
             <Obj> can_3 </Obj>
             <Cont>controls/tiago_serve_client.cntr</Cont>
-            <InitControls> 0.575 0.827 0.237 0.669 0.188 0.647 0.372 0.831 0.538 0.504 0.5 0.91</InitControls>
-            <GoalControls> 0.594 0.519 0.895 0.643 0.203 0.602 0.372 0.959 0.526 0.504 0.5 0.91</GoalControls>
+            <InitControls> 0.594 0.519 0.895 0.643 0.203 0.602 0.372 0.959 0.526 0.504 0.5 0.91</InitControls>
+            <GoalControls> 0.575 0.827 0.237 0.669 0.188 0.647 0.372 0.831 0.538 0.504 0.5 0.91</GoalControls>
         </Serve>
 
         <Move robot="TIAGO" region_from="CLIENT" region_to="KITCHEN">

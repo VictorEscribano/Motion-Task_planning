@@ -30,6 +30,9 @@ def FILL(node, fill, info, Line):
     
     print("Init= ", init)
     print("Goal= ", goal)
+
+
+    info.Robot_move_control= Robot_control
     print("Robot control= ", Robot_control)
     
     # Configurar control del robot

@@ -29,8 +29,6 @@
     (and
         (in thirdcan client)
         (served thirdcan) ; Ensure thirdcan has been served
-        (in firstcan kitchen)
-        (in secondcan kitchen)
         
     )
 )

@@ -21,8 +21,8 @@ def FILL(node, fill, info, Line):
     
     # Inicializar variables
     try:
-        init = fill['Regioncontrols']
-        goal = fill['ClickButton']
+        init = fill['InitControls']
+        goal = fill['GoalControls']
         Robot_control = fill['Cont']
     except KeyError as e:
         print(f"Error: Campo faltante en los datos de FILL: {e}")
@@ -48,7 +48,7 @@ def FILL(node, fill, info, Line):
     if path:
         print("-------- Path found: Filling action ")
         # Escribir el path en el archivo de tareas
-        info.taskfile.write("\t<Filling>\n")
+        info.taskfile.write("\t<Transit>\n")
         
         k = sorted(list(path.keys()))[-1][1] + 1  # número de articulaciones
         p = sorted(list(path.keys()))[-1][0] + 1  # número de puntos en el path
@@ -58,7 +58,7 @@ def FILL(node, fill, info, Line):
                 tex = tex + str(path[i, j]) + " "
             ktmpb_python_interface.writePath(info.taskfile, tex)
         
-        info.taskfile.write("\t</Filling>\n")
+        info.taskfile.write("\t</Transit>\n")
         
         # Mover el robot al estado objetivo
         kautham.kMoveRobot(node, goal)

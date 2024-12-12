@@ -46,7 +46,7 @@
 
 (:action serve
    :parameters    (?rob - robot ?obs - obstacle ?to - location)
-   :precondition  (and  (not (isempty ?obs)) (isclean ?obs) (at ?rob coffeemachine) (in ?obs coffeemachine) (not (served ?obs)))
+   :precondition  (and  (not (isempty ?obs)) (isclean ?obs) (at ?rob coffeemachine) (in ?obs coffeemachine) (not (served ?obs)) (not (holding ?rob ?obs)) (handEmpty))
    :effect        (and  (in ?obs ?to) (at ?rob ?to) (served ?obs) (not (holding ?rob ?obs)))
 )
 )

@@ -129,6 +129,7 @@
             <Rob> 0 </Rob>
             <Obj> can_3 </Obj>
             <Cont>controls/tiago_serve_client.cntr</Cont>
+            <Link> 14 </Link> <!-- Index of the robot link -->
             <InitControls grasp= "lateralgrasp">0.575 0.827 0.237 0.669 0.188 0.647 0.372 0.831 0.538 0.504 0.5 0.91 </InitControls>
             <GoalControls> 0.594 0.519 0.895 0.643 0.203 0.602 0.372 0.959 0.526 0.504 0.5 0.91</GoalControls>
         </Serve>

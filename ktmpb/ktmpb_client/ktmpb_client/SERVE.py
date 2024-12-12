@@ -51,7 +51,7 @@ def SERVE(node, serve, info, Line):
     if path:
         print("-------- Path encontrado: Realizando movimiento para SERVE.")
         # Escribir el path en el archivo de tareas
-        info.taskfile.write("\t<Transit>\n")
+        info.taskfile.write("\t<Transfer object = \"%s\" robot = \"%d\" link = \"%d\">\n" % (obsName,robotIndex, 14))
         k = sorted(list(path.keys()))[-1][1] + 1  # Número de articulaciones
         p = sorted(list(path.keys()))[-1][0] + 1  # Número de puntos en el path
         for i in range(p):
@@ -59,7 +59,7 @@ def SERVE(node, serve, info, Line):
             for j in range(0, k):
                 tex = tex + str(path[i, j]) + " "
             ktmpb_python_interface.writePath(info.taskfile, tex)
-        info.taskfile.write("\t</Transit>\n")
+        info.taskfile.write("\t</Transfer>\n")
         
         # Mover el robot al estado objetivo
         kautham.kMoveRobot(node, goal)

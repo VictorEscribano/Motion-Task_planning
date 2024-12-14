@@ -25,7 +25,9 @@ def PLACE(node,place,info,Line):  #management of the action on the task plan
     obsName = place['Obj'] #Obj_name 
     robotIndex = place['Rob'] #Robot_name 
     init = place['Regioncontrols']
-    Robot_control=place['Cont']
+    Robot_control= place['Cont']
+    RetHome =  place['RetHome']
+
     #Set robot control
     kautham.kSetRobControlsNoQuery(node,Robot_control)
 
@@ -72,32 +74,36 @@ def PLACE(node,place,info,Line):  #management of the action on the task plan
     print("Placing object ",obsName)
     kautham.kDetachObject(node,obsName)
     #Move back to the home configuration of the region without the object
-    print("-Searching path to Move back to the home configuration of the region")
-    print("Init= ", goal)
-    print("Goal= ", init)
-    print("Robot Control=",Robot_control)
-    #Set robot control
-    kautham.kSetRobControlsNoQuery(node,Robot_control)
-    kautham.kSetQuery(node,goal,init)
-    kautham.kSetPlannerParameter(node,"_Incremental (0/1)","0") #to assure a fresh GetPath
-    path_r=kautham.kGetPath(node,1)
-    if path_r:
-        print("-------- Path found: Moving to the home configuration of the region " )
-        kautham.kMoveRobot(node,init)
-        info.taskfile.write("\t<Transit>\n")
-        k = sorted(list(path_r.keys()))[-1][1]+1 #number of joints
-        p = sorted(list(path_r.keys()))[-1][0]+1 #number of points in the path
-        for i in range(p):
-            tex=''
-            for j in range(0,k):
-                tex=tex + str(path_r[i,j]) + " "
-            ktmpb_python_interface.writePath(info.taskfile,tex)
-        info.taskfile.write("\t</Transit>\n")
-    else:
-        print("**************************************************************************")
-        print("Get path Failed! No Move possible after Place process, Infeasible Task Plan")
-        print("**************************************************************************")
-        return False
+
+    if RetHome == 1:
+        print("-Searching path to Move back to the home configuration of the region")
+        print("Init= ", goal)
+        print("Goal= ", init)
+        print("Robot Control=",Robot_control)
+        #Set robot control
+        kautham.kSetRobControlsNoQuery(node,Robot_control)
+        kautham.kSetQuery(node,goal,init)
+        kautham.kSetPlannerParameter(node,"_Incremental (0/1)","0") #to assure a fresh GetPath
+        path_r=kautham.kGetPath(node,1)
+        if path_r:
+            print("-------- Path found: Moving to the home configuration of the region " )
+            kautham.kMoveRobot(node,init)
+            info.taskfile.write("\t<Transit>\n")
+            k = sorted(list(path_r.keys()))[-1][1]+1 #number of joints
+            p = sorted(list(path_r.keys()))[-1][0]+1 #number of points in the path
+            for i in range(p):
+                tex=''
+                for j in range(0,k):
+                    tex=tex + str(path_r[i,j]) + " "
+                ktmpb_python_interface.writePath(info.taskfile,tex)
+            info.taskfile.write("\t</Transit>\n")
+        else:
+            print("**************************************************************************")
+            print("Get path Failed! No Move possible after Place process, Infeasible Task Plan")
+            print("**************************************************************************")
+            return False
+        
+        return True
 
     return True
 

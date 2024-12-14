@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot name="cafetera">
+        <link name="base">
+        <visual>
+            <!--origin xyz="0.001 0.00288 -0.013" rpy="0 0 0" /-->
+            <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="final_project_models/cafetera.dae" scale="1 1 1"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <mesh filename="final_project_models/cafetera.dae" scale="1 1 1"/>
+            </geometry>
+            <material>
+			<color rgba="1 1 0 1" />
+	    </material>
+        </collision>
+	</link>
+</robot>
+

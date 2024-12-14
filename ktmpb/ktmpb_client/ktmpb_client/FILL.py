@@ -62,13 +62,48 @@ def FILL(node, fill, info, Line):
         
         # Mover el robot al estado objetivo
         kautham.kMoveRobot(node, goal)
-        return True
+    else:
+        print("**************************************************************************")
+        print("Get path Failed! No Fill possible, Infeasible Task Plan")
+        print("**************************************************************************")
+        return False
+    
+
+    # Configurar control del robot
+    kautham.kSetRobControlsNoQuery(node, Robot_control)
+    
+    # Configurar la consulta de movimiento en Kautham
+    kautham.kSetQuery(node, goal, init)
+    print("Solving Query")
+    kautham.kSetPlannerParameter(node, "_Incremental (0/1)", "0")  # Planificación desde cero
+    
+    path = kautham.kGetPath(node, 1)
+    
+    if path:
+        print("-------- Path found: Filling action ")
+        # Escribir el path en el archivo de tareas
+        info.taskfile.write("\t<Transit>\n")
+        
+        k = sorted(list(path.keys()))[-1][1] + 1  # número de articulaciones
+        p = sorted(list(path.keys()))[-1][0] + 1  # número de puntos en el path
+        for i in range(p):
+            tex = ''
+            for j in range(0, k):
+                tex = tex + str(path[i, j]) + " "
+            ktmpb_python_interface.writePath(info.taskfile, tex)
+        
+        info.taskfile.write("\t</Transit>\n")
+        
+        # Mover el robot al estado objetivo
+        kautham.kMoveRobot(node, goal)
+        
     else:
         print("**************************************************************************")
         print("Get path Failed! No Fill possible, Infeasible Task Plan")
         print("**************************************************************************")
         return False
 
+    return True
 
 def Fill_read(action_element):  # Leer datos de la configuración
     for val in action_element.attrib:

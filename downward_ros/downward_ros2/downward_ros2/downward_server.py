@@ -23,9 +23,12 @@ class DownwardServer(Node):
         print("PDDL problem file ",req.problem)
         print("PDDL domain file ",req.domain)
         if(req.evaluator=="" and req.search=="" ):
-            print("------ CALLING fast-downward as FF -------")
-            evaluator = "\"hff=ff()\""
-            search = "\"lazy_greedy([hff], preferred=[hff])\""
+            # print("------ CALLING fast-downward as FF -------")
+            # evaluator = "\"hff=ff()\""
+            # search = "\"lazy_greedy([hff], preferred=[hff])\""
+            print("------ CALLING the landmark heuristic combined with goal-counting within a lazy weighted A* search strategy. -------")
+            evaluator = "\"lmcut=lmcut()\""
+            search = "\"lazy_wastar([lmcut], w=2, reopen_closed=true)\""
         else:
             evaluator = req.evaluator
             search = req.search

@@ -59,7 +59,7 @@
             <Link> 14 </Link> <!-- Index of the robot link -->
             <Cont>controls/tiago_pick_tableB.cntr</Cont>
             <Regioncontrols> 0.459 0.023 0.628 0.688 0.820 0.083 0.974 0.553 1.000</Regioncontrols>
-            <Graspcontrols grasp= "lateralgrasp">1 0.56 0.876 0.673 0.466 0.09 1 0.451 0.797</Graspcontrols>
+            <Graspcontrols grasp= "lateralgrasp">1 0.684 0.876 0.673 0.466 0.09 1 0.451 0.797</Graspcontrols>
             
         </Pick>
         <Place robot="TIAGO" object="SECONDCAN" region="KITCHEN">
@@ -93,7 +93,7 @@
             <Link> 14 </Link> <!-- Index of the robot link -->
             <Cont>controls/tiago_pick_sink.cntr</Cont>
             <Regioncontrols> 0.459 0.023 0.628 0.688 0.820 0.083 0.974 0.553 1.000</Regioncontrols>
-            <Graspcontrols grasp= "lateralgrasp">0.9 0.613 0.793 0.432 0.733 0.643 0.5 0.5 0.91</Graspcontrols>
+            <Graspcontrols grasp= "lateralgrasp">1 0.579 0.549 0.402 0.744 0.459 0.5 0.5 0.797</Graspcontrols>
         </Pick>
 
         <Move robot="TIAGO" region_from="SINK" region_to="CLIENT">

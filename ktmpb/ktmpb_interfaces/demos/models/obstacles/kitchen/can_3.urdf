@@ -11,7 +11,7 @@
                 <!--origin xyz="0.0 0.0 0.055" rpy="0 0 0" /-->
 		<geometry>
                          <!--<mesh filename="can/cokecan2.dae" scale="0.0254 0.0254 0.0254"/>-->
-            <cylinder length="0.14" radius="0.025"/>
+            <cylinder length="0.07" radius="0.025"/>
       		</geometry>
 		<!--material>
                     <color rgba="0 0 1 1" />
@@ -22,7 +22,7 @@
 		<origin xyz="0.0 0.0 0.08" rpy="0 0 0"/>
             <geometry>
        			 <!--mesh filename="can/cokecan.dae"  scale="0.0254 0.0254 0.0254"/-->
-                         <cylinder length="0.14" radius="0.025"/>
+                         <cylinder length="0.07" radius="0.025"/>
             </geometry>
 	    <material>
 			<color rgba="0 1 0 1" />

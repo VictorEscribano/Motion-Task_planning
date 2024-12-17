@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import os
 
 # Directorios de entrada y salida
-input_folder = r"Benchmarks\Results_Benchmarks_PICKs\DBs"  # Ruta de archivos .db
-output_folder = r"Benchmarks\Results_Benchmarks_PICKs\plots"  # Carpeta para guardar imágenes
+input_folder = r"Benchmarks\Results_Benchmarks_MOVEs\DBs"  # Ruta de archivos .db
+output_folder = r"Benchmarks\Results_Benchmarks_MOVEs\plots"  # Carpeta para guardar imágenes
 
 # Asegurarse de que el directorio de salida existe
 if not os.path.exists(output_folder):

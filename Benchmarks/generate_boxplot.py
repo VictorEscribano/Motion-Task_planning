@@ -41,8 +41,11 @@ def process_db_file(db_path, output_folder):
         for box in boxplot.artists:
             box.set_facecolor('#d4f8e8')
         
-        plt.title("")
-        plt.suptitle("")
+        # Incluir el nombre del archivo en el título
+        db_name = os.path.basename(db_path).replace('.db', '')
+        plt.title(f"Box Plot for {db_name}")
+        plt.suptitle("")  # Eliminar título superior por defecto
+        
         plt.xlabel("planner")
         plt.ylabel("time")
         plt.xticks(rotation=45)  # Rotar labels para mejor visibilidad
@@ -50,7 +53,6 @@ def process_db_file(db_path, output_folder):
         plt.tight_layout()
         
         # Guardar el gráfico
-        db_name = os.path.basename(db_path).replace('.db', '')
         output_path = os.path.join(output_folder, f"{db_name}_boxplot.png")
         plt.savefig(output_path)
         plt.close()

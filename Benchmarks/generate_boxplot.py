@@ -4,59 +4,78 @@ import matplotlib.pyplot as plt
 import os
 
 # Directorios de entrada y salida
-input_folder = r"Benchmarks\Results_Benchmarks_PICKs\DBs" 
-output_folder = r"Benchmarks\Results_Benchmarks_PICKs\plots" 
+input_folder = r"Benchmarks\Results_Benchmarks_PICKs\DBs"  # Ruta de archivos .db
+output_folder = r"Benchmarks\Results_Benchmarks_PICKs\plots"  # Carpeta para guardar imágenes
 
 # Asegurarse de que el directorio de salida existe
 if not os.path.exists(output_folder):
     os.makedirs(output_folder)
 
-# Función para procesar un archivo .db y guardar el gráfico
+# Función para procesar un archivo .db y generar gráficos
 def process_db_file(db_path, output_folder):
     try:
         conn = sqlite3.connect(db_path)
         
-        # Obtener plannerid y nombres de planners
+        # Obtener datos relevantes de las tablas
         planner_query = "SELECT id, name FROM plannerConfigs"
-        runs_query = "SELECT plannerid, time FROM runs"
+        runs_query = "SELECT plannerid, time, solved, solution_length FROM runs"
         
         planners_df = pd.read_sql_query(planner_query, conn)
         runs_df = pd.read_sql_query(runs_query, conn)
         
-        # Combinar datos
+        # Combinar datos con nombres de planners
         merged_df = runs_df.merge(planners_df, left_on="plannerid", right_on="id")
-        merged_df = merged_df[['name', 'time']].rename(columns={"name": "planner"})
+        merged_df = merged_df.rename(columns={"name": "planner"})
         
         conn.close()
         
-        # Ajustar tamaño dinámicamente según el número de planners
-        num_planners = merged_df['planner'].nunique()
-        fig_width = max(15, num_planners * 2)  # Ajuste dinámico del ancho
-        
-        # Crear y guardar el box plot
-        plt.figure(figsize=(fig_width, 8))  # Ancho dinámico, altura fija
-        boxplot = merged_df.boxplot(column='time', by='planner', patch_artist=True)
-        
-        # Personalización del color verde clarito
-        for box in boxplot.artists:
-            box.set_facecolor('#d4f8e8')
-        
-        # Incluir el nombre del archivo en el título
+        # Nombre base del archivo
         db_name = os.path.basename(db_path).replace('.db', '')
-        plt.title(f"Box Plot for {db_name}")
-        plt.suptitle("")  # Eliminar título superior por defecto
-        
-        plt.xlabel("planner")
-        plt.ylabel("time")
-        plt.xticks(rotation=45)  # Rotar labels para mejor visibilidad
-        plt.grid(False)
+
+        # Gráfico 1: Box Plot de "time"
+        plt.figure(figsize=(20, 8))
+        merged_df.boxplot(column='time', by='planner', patch_artist=True)
+        for box in plt.gca().artists:
+            box.set_facecolor('#d4f8e8')  # Verde clarito
+        plt.title(f"Time Results for {db_name}")
+        plt.suptitle("")
+        plt.xlabel("Planner")
+        plt.ylabel("Time")
+        plt.xticks(rotation=45)
         plt.tight_layout()
-        
-        # Guardar el gráfico
-        output_path = os.path.join(output_folder, f"{db_name}_boxplot.png")
-        plt.savefig(output_path)
+        plt.savefig(os.path.join(output_folder, f"{db_name}_time.png"))
         plt.close()
-        print(f"Gráfico guardado en: {output_path}")
+
+        # Gráfico 2: Box Plot de "solved"
+        plt.figure(figsize=(20, 8))
+        merged_df.boxplot(column='solved', by='planner', patch_artist=True)
+        for box in plt.gca().artists:
+            box.set_facecolor('#d4f8e8')  # Verde clarito
+        plt.title(f"Solved Results for {db_name}")
+        plt.suptitle("")
+        plt.xlabel("Planner")
+        plt.ylabel("Solved")
+        plt.yticks([0, 1], ["Not Solved", "Solved"])
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.savefig(os.path.join(output_folder, f"{db_name}_solved.png"))
+        plt.close()
+
+        # Gráfico 3: Box Plot de "solution_length"
+        plt.figure(figsize=(20, 8))
+        merged_df.boxplot(column='solution_length', by='planner', patch_artist=True)
+        for box in plt.gca().artists:
+            box.set_facecolor('#add8e6')  # Azul claro
+        plt.title(f"Solution Length Results for {db_name}")
+        plt.suptitle("")
+        plt.xlabel("Planner")
+        plt.ylabel("Solution Length")
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        plt.savefig(os.path.join(output_folder, f"{db_name}_solution_length.png"))
+        plt.close()
+
+        print(f"Gráficos guardados para {db_name}")
     
     except Exception as e:
         print(f"Error procesando {db_path}: {e}")
